@@ -14,7 +14,7 @@ public class DataHelper {
     }
 
     public static CardNumber generateValidCardNumberDeclined() {
-        return new CardNumber("4444 4444 4444 44442", "DECLINED");
+        return new CardNumber("4444 4444 4444 4442", "DECLINED");
     }
 
     public static Date generateValidDate() {

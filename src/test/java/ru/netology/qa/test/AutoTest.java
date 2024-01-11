@@ -10,16 +10,17 @@ import ru.netology.qa.data.page.PaymentCardPage;
 import static com.codeborne.selenide.Selenide.open;
 
 public class AutoTest {
+    DashboardPage dashboardPage;
 
     @BeforeEach
     public void setup() {
-        open("http://localhost:8080");
+        dashboardPage = open("http://localhost:8080", DashboardPage.class);
+        DashboardPage.selectPaymentCardPage();
     }
 
-    @DisplayName("Успешная покупка с оплатой по карте")
     @Test
-    public void shouldSuccessfulPurchaseWithCardPayment() {
-        DashboardPage.selectPaymentCardPage();
+    @DisplayName("Успешная покупка с оплатой по карте, валидные данные")
+    void shouldSuccessfulPurchaseWithCardPayment() {
         var card = DataHelper.generateValidCardNumberApproved();
         var date = DataHelper.generateValidDate();
         var name = DataHelper.generateValidName();
@@ -31,5 +32,21 @@ public class AutoTest {
         PaymentCardPage.clickContinue();
 
         PaymentCardPage.checkNotificationSuccessfullyContent();
+    }
+
+    @Test
+    @DisplayName("Отказ в покупке с оплатой по карте, карта отклонена")
+    void shouldRejectionPurchaseWithCardPayment() {
+        var card = DataHelper.generateValidCardNumberDeclined();
+        var date = DataHelper.generateValidDate();
+        var name = DataHelper.generateValidName();
+        var cvc = DataHelper.generateValidCvc();
+        PaymentCardPage.fillInTheForm(card,
+                date,
+                name,
+                cvc);
+        PaymentCardPage.clickContinue();
+
+        PaymentCardPage.checkNotificationRejectionContent();
     }
 }
