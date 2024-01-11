@@ -4,41 +4,54 @@ import com.github.javafaker.Faker;
 import lombok.Value;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.Locale;
+import java.util.Random;
 
 
 public class DataHelper {
-    public static CardNumber setValidCardNumberApproved() {
+    public static CardNumber generateValidCardNumberApproved() {
         return new CardNumber("4444 4444 4444 4441", "APPROVED");
     }
 
-    public static CardNumber setValidCardNumberDeclined() {
+    public static CardNumber generateValidCardNumberDeclined() {
         return new CardNumber("4444 4444 4444 44442", "DECLINED");
     }
 
-    public static String generateMonth(int shift) {
-        return LocalDate.now().plusMonths(shift).format(DateTimeFormatter.ofPattern("MM"));
+    public static Date generateValidDate() {
+        LocalDate currentDate = LocalDate.now();
+
+        int randomYear = currentDate.getYear() + new Random().nextInt(6);
+
+        int randomMonth = (randomYear == currentDate.getYear()) ?
+                currentDate.getMonthValue() + new Random().nextInt(13 - currentDate.getMonthValue()) :
+                new Random().nextInt(12) + 1;
+
+        String year = String.format("%02d", randomYear % 100);
+        String month = String.format("%02d", randomMonth);
+
+        return new Date(month, year);
     }
 
-    public static String generateYear(int shift) {
-        return LocalDate.now().plusYears(shift).format(DateTimeFormatter.ofPattern("yy"));
-    }
 
-    public static String generateName(String local) {
-        String firstName = new Faker(new Locale(local)).name().firstName();
-        String lastName = new Faker(new Locale(local)).name().lastName();
+    public static String generateValidName() {
+        String firstName = new Faker(new Locale("en")).name().firstName();
+        String lastName = new Faker(new Locale("en")).name().lastName();
         return firstName + " " + lastName;
     }
 
-    public static String generateCvc() {
-        var faker = new Faker();
-        return faker.regexify("[0-9]{3}");
+    public static String generateValidCvc() {
+        return new Faker().regexify("[0-9]{3}");
     }
 
     @Value
     public static class CardNumber {
         private String cardNumber;
         private String status;
+    }
+
+    @Value
+    public static class Date {
+        private String month;
+        private String year;
     }
 }
