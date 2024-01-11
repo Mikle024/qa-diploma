@@ -2,6 +2,7 @@ package ru.netology.qa.data.page;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
+import data.DataHelper;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Condition.visible;
@@ -22,12 +23,12 @@ public class PaymentCardPage {
         header.shouldBe(visible);
     }
 
-    public static void fillInTheForm(String setCardNumber,
+    public static void fillInTheForm(DataHelper.CardNumber card,
                                      String setMonth,
                                      String setYears,
                                      String setName,
                                      String setCVC) {
-        cardNumber.setValue(setCardNumber);
+        cardNumber.setValue(card.getCardNumber());
         month.setValue(setMonth);
         year.setValue(setYears);
         name.setValue(setName);
