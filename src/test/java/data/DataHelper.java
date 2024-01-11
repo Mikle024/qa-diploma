@@ -19,16 +19,12 @@ public class DataHelper {
 
     public static Date generateValidDate() {
         LocalDate currentDate = LocalDate.now();
-
         int randomYear = currentDate.getYear() + new Random().nextInt(6);
-
         int randomMonth = (randomYear == currentDate.getYear()) ?
                 currentDate.getMonthValue() + new Random().nextInt(13 - currentDate.getMonthValue()) :
                 new Random().nextInt(12) + 1;
-
         String year = String.format("%02d", randomYear % 100);
         String month = String.format("%02d", randomMonth);
-
         return new Date(month, year);
     }
 
