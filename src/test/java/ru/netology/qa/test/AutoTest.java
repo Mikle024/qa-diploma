@@ -3,10 +3,13 @@ package ru.netology.qa.test;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import data.DataHelper;
+import data.SQLHelper;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.*;
 import ru.netology.qa.data.page.DashboardPage;
 import ru.netology.qa.data.page.PaymentCardPage;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import static com.codeborne.selenide.Selenide.open;
 
@@ -45,8 +48,11 @@ public class AutoTest {
                 name,
                 cvc);
         PaymentCardPage.clickContinue();
-
         PaymentCardPage.checkNotificationSuccessfullyContent();
+
+        var expectedStatusSQL = card.getStatus();
+        var actualStatusSQL = SQLHelper.getCardPaymentStatus();
+        assertEquals(expectedStatusSQL, actualStatusSQL);
     }
 
     @Test
@@ -61,7 +67,10 @@ public class AutoTest {
                 name,
                 cvc);
         PaymentCardPage.clickContinue();
-
         PaymentCardPage.checkNotificationRejectionContent();
+
+        var expectedStatusSQL = card.getStatus();
+        var actualStatusSQL = SQLHelper.getCardPaymentStatus();
+        assertEquals(expectedStatusSQL, actualStatusSQL);
     }
 }

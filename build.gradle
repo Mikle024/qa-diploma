@@ -27,6 +27,8 @@ dependencies {
     testImplementation 'com.codeborne:selenide:6.17.1'
     testImplementation 'com.github.javafaker:javafaker:1.0.2'
     testImplementation 'io.qameta.allure:allure-selenide:2.20.1'
+    testImplementation 'commons-dbutils:commons-dbutils:1.7'
+    testImplementation 'mysql:mysql-connector-java:8.0.30'
     testImplementation 'org.projectlombok:lombok:1.18.28'
 }
 
