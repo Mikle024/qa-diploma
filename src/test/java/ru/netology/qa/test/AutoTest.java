@@ -2,16 +2,16 @@ package ru.netology.qa.test;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
-import data.DataHelper;
-import data.SQLHelper;
+import ru.netology.qa.data.DataHelper;
+import ru.netology.qa.data.SQLHelper;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.*;
-import ru.netology.qa.data.page.DashboardPage;
-import ru.netology.qa.data.page.PaymentCardPage;
+import ru.netology.qa.page.DashboardPage;
+import ru.netology.qa.page.PaymentCardPage;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import static com.codeborne.selenide.Selenide.open;
+import static ru.netology.qa.data.SQLHelper.clearDB;
 
 public class AutoTest {
     static {
@@ -32,6 +32,7 @@ public class AutoTest {
 
     @BeforeEach
     public void setup() {
+        clearDB();
         dashboardPage = open("http://localhost:8080", DashboardPage.class);
         DashboardPage.selectPaymentCardPage();
     }
