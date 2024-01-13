@@ -146,6 +146,17 @@ public class DataHelper {
         return new Faker().regexify("[0-9]{3}");
     }
 
+    public static String generateRandomWord() {
+        StringBuilder randomWord = new StringBuilder();
+
+        for (int i = 0; i < 3; i++) {
+            char randomLetter = (char) ('a' + new Random().nextInt(26));
+            randomWord.append(randomLetter);
+        }
+
+        return randomWord.toString();
+    }
+
     @Value
     public static class CardNumber {
         private String cardNumber;
