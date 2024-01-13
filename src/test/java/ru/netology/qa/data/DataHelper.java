@@ -52,11 +52,94 @@ public class DataHelper {
         return new Date(month, year);
     }
 
+    public static Date generateInvalidDateMonthGreaterThanTwelfth() {
+        int randomYear = LocalDate.now().getYear() + new Random().nextInt(6);
+        return new Date("13", String.format("%02d", randomYear % 100));
+    }
+
+    public static Date generateInvalidDateOneCharacterMonth() {
+        int randomYear = LocalDate.now().getYear() + new Random().nextInt(6);
+        return new Date("1", String.format("%02d", randomYear % 100));
+    }
+
+    public static Date generateInvalidDateEmptyMonth() {
+        int randomYear = LocalDate.now().getYear() + new Random().nextInt(6);
+        return new Date("", String.format("%02d", randomYear % 100));
+    }
+
+    public static Date generateInvalidDateMonthOfAlphabetical() {
+        int randomYear = LocalDate.now().getYear() + new Random().nextInt(6);
+        return new Date("AX", String.format("%02d", randomYear % 100));
+    }
+
+    public static Date generateInvalidDateMonthOfSpecialCharacter() {
+        int randomYear = LocalDate.now().getYear() + new Random().nextInt(6);
+        return new Date("%&", String.format("%02d", randomYear % 100));
+    }
+
+    public static Date generateInvalidDateMonthOfSpace() {
+        int randomYear = LocalDate.now().getYear() + new Random().nextInt(6);
+        return new Date(" ", String.format("%02d", randomYear % 100));
+    }
+
+    public static Date generateInvalidDateEmptyYear() {
+        return new Date(String.format("%02d", new Random().nextInt(12) + 1), "");
+    }
+
+    public static Date generateInvalidDateOneCharacterYear() {
+        return new Date(String.format("%02d", new Random().nextInt(12) + 1), "1");
+    }
+
+    public static Date generateInvalidPastDate() {
+        LocalDate currentDate = LocalDate.now().plusMonths(-1);
+        int currentYear = currentDate.getYear();
+        int pastMonth = currentDate.getMonthValue();
+        String year = String.format("%02d", currentYear % 100);
+        String month = String.format("%02d", pastMonth);
+        return new Date(month, year);
+    }
+
+    public static Date generateInvalidFutureDate() {
+        LocalDate currentDate = LocalDate.now();
+        int randomYear = currentDate.getYear() + 6;
+        int randomMonth = currentDate.getMonthValue();
+        String year = String.format("%02d", randomYear % 100);
+        String month = String.format("%02d", randomMonth);
+        return new Date(month, year);
+    }
+
+    public static Date generateInvalidDateYearOfAlphabetical() {
+        return new Date(String.format("%02d", new Random().nextInt(12) + 1), "AX");
+    }
+
+    public static Date generateInvalidDateYearOfSpecialCharacter() {
+        return new Date(String.format("%02d", new Random().nextInt(12) + 1), "%&");
+    }
+
+    public static Date generateInvalidDateYearOfSpace() {
+        return new Date(String.format("%02d", new Random().nextInt(12) + 1), " ");
+    }
 
     public static String generateValidName() {
         String firstName = new Faker(new Locale("en")).name().firstName();
         String lastName = new Faker(new Locale("en")).name().lastName();
         return firstName + " " + lastName;
+    }
+
+    public static String generateValidHyphenInAName() {
+        String firstName = new Faker(new Locale("en")).name().firstName();
+        String lastName = new Faker(new Locale("en")).name().lastName();
+        return firstName + "-" + lastName;
+    }
+
+    public static String generateRandomSpecialChar() {
+        String specialChars = "!@#$%^&*()-_=+[]{}|;:'\",.<>/?";
+        int randomIndex = new Random().nextInt(specialChars.length());
+        return String.valueOf(specialChars.charAt(randomIndex));
+    }
+
+    public static String generateRandomNumber() {
+        return String.valueOf(new Random().nextInt(10));
     }
 
     public static String generateValidCvc() {

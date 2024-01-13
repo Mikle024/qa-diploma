@@ -27,6 +27,7 @@ public class PaymentCardPage {
     private static SelenideElement redNotificationWrongFormat = $(byText("Неверный формат"));
     private static SelenideElement redNotificationRequiredField = $(byText("Поле обязательно для заполнения"));
     private static SelenideElement redNotificationWrongCardExpiration = $(byText("Истёк срок действия карты"));
+    private static SelenideElement redNotificationWrongCardBeyondTheExpirationDate = $(byText("Неверно указан срок действия карты"));
 
 
     private static ElementsCollection notificationContent = $$(".notification__content");
@@ -76,6 +77,11 @@ public class PaymentCardPage {
 
     public static void checkRedNotificationWrongCardExpiration() {
         redNotificationWrongCardExpiration
+                .shouldBe(visible);
+    }
+
+    public static void checkRedNotificationWrongCardBeyondTheExpirationDate() {
+        redNotificationWrongCardBeyondTheExpirationDate
                 .shouldBe(visible);
     }
 }
