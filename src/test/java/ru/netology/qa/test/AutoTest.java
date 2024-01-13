@@ -44,10 +44,7 @@ public class AutoTest {
         var date = DataHelper.generateValidDate();
         var name = DataHelper.generateValidName();
         var cvc = DataHelper.generateValidCvc();
-        PaymentCardPage.fillInTheForm(card,
-                date,
-                name,
-                cvc);
+        PaymentCardPage.fillInTheForm(card, date, name, cvc);
         PaymentCardPage.clickContinue();
         PaymentCardPage.checkNotificationSuccessfullyContent();
 
@@ -63,15 +60,121 @@ public class AutoTest {
         var date = DataHelper.generateValidDate();
         var name = DataHelper.generateValidName();
         var cvc = DataHelper.generateValidCvc();
-        PaymentCardPage.fillInTheForm(card,
-                date,
-                name,
-                cvc);
+        PaymentCardPage.fillInTheForm(card, date, name, cvc);
         PaymentCardPage.clickContinue();
         PaymentCardPage.checkNotificationRejectionContent();
 
         var expectedStatusSQL = card.getStatus();
         var actualStatusSQL = SQLHelper.getCardPaymentStatus();
         assertEquals(expectedStatusSQL, actualStatusSQL);
+    }
+
+    @Test
+    @DisplayName("Попытка покупки, с незаполненными полями")
+    void purchaseAttemptWithBlankFields() {
+        PaymentCardPage.clickContinue();
+
+        PaymentCardPage.checkRedNotificationWrongFormat();
+        PaymentCardPage.checkRedNotificationRequiredField();
+
+        var expectedEmptyDB = true;
+        var actualEmptyDB = SQLHelper.checkEmptyDB();
+        assertEquals(expectedEmptyDB, actualEmptyDB);
+    }
+
+    @Test
+    @DisplayName("Негативный сценарий покупки, пустое поле \"Номер карты")
+    void negativePurchaseScenarioBlankCardNumberField() {
+        var card = DataHelper.generateEmptyCardNumber();
+        var date = DataHelper.generateValidDate();
+        var name = DataHelper.generateValidName();
+        var cvc = DataHelper.generateValidCvc();
+        PaymentCardPage.fillInTheForm(card, date, name, cvc);
+        PaymentCardPage.clickContinue();
+        PaymentCardPage.checkRedNotificationWrongFormat();
+
+        var expectedEmptyDB = true;
+        var actualEmptyDB = SQLHelper.checkEmptyDB();
+        assertEquals(expectedEmptyDB, actualEmptyDB);
+    }
+
+    @Test
+    @DisplayName("Негативный сценарий покупки, невалидный номер карты, менее 16 цифр")
+    void negativePurchaseScenarioInvalidCardNumberLessThan16Digits() {
+        var card = DataHelper.generateShortCardNumber();
+        var date = DataHelper.generateValidDate();
+        var name = DataHelper.generateValidName();
+        var cvc = DataHelper.generateValidCvc();
+        PaymentCardPage.fillInTheForm(card, date, name, cvc);
+        PaymentCardPage.clickContinue();
+        PaymentCardPage.checkRedNotificationWrongFormat();
+
+        var expectedEmptyDB = true;
+        var actualEmptyDB = SQLHelper.checkEmptyDB();
+        assertEquals(expectedEmptyDB, actualEmptyDB);
+    }
+
+    @Test
+    @DisplayName("Негативный сценарий покупки, невалидный номер карты, состоящий из нулей")
+    void negativePurchaseScenarioInvalidCardNumberConsistingOfZeros() {
+        var card = DataHelper.generateCardNumberOfZeros();
+        var date = DataHelper.generateValidDate();
+        var name = DataHelper.generateValidName();
+        var cvc = DataHelper.generateValidCvc();
+        PaymentCardPage.fillInTheForm(card, date, name, cvc);
+        PaymentCardPage.clickContinue();
+        PaymentCardPage.checkRedNotificationWrongFormat();
+
+        var expectedEmptyDB = true;
+        var actualEmptyDB = SQLHelper.checkEmptyDB();
+        assertEquals(expectedEmptyDB, actualEmptyDB);
+    }
+
+    @Test
+    @DisplayName("Попытка ввода букв в поле \"Номер карты")
+    void attemptingToEnterLettersInTheCardNumberField() {
+        var card = DataHelper.generateAlphabeticalCardNumber();
+        var date = DataHelper.generateValidDate();
+        var name = DataHelper.generateValidName();
+        var cvc = DataHelper.generateValidCvc();
+        PaymentCardPage.fillInTheForm(card, date, name, cvc);
+        PaymentCardPage.clickContinue();
+        PaymentCardPage.checkRedNotificationWrongFormat();
+
+        var expectedEmptyDB = true;
+        var actualEmptyDB = SQLHelper.checkEmptyDB();
+        assertEquals(expectedEmptyDB, actualEmptyDB);
+    }
+
+    @Test
+    @DisplayName("Попытка ввода спец. символов в поле \"Номер карты")
+    void attemptingToEnterSpecialCharactersInTheCardNumberField() {
+        var card = DataHelper.generateCardNumberWithSpecialCharacters();
+        var date = DataHelper.generateValidDate();
+        var name = DataHelper.generateValidName();
+        var cvc = DataHelper.generateValidCvc();
+        PaymentCardPage.fillInTheForm(card, date, name, cvc);
+        PaymentCardPage.clickContinue();
+        PaymentCardPage.checkRedNotificationWrongFormat();
+
+        var expectedEmptyDB = true;
+        var actualEmptyDB = SQLHelper.checkEmptyDB();
+        assertEquals(expectedEmptyDB, actualEmptyDB);
+    }
+
+    @Test
+    @DisplayName("Попытка ввода пробела в поле \"Номер карты")
+    void attemptingToEnterSpaceInTheCardNumberField() {
+        var card = DataHelper.generateCardNumberWithSpace();
+        var date = DataHelper.generateValidDate();
+        var name = DataHelper.generateValidName();
+        var cvc = DataHelper.generateValidCvc();
+        PaymentCardPage.fillInTheForm(card, date, name, cvc);
+        PaymentCardPage.clickContinue();
+        PaymentCardPage.checkRedNotificationWrongFormat();
+
+        var expectedEmptyDB = true;
+        var actualEmptyDB = SQLHelper.checkEmptyDB();
+        assertEquals(expectedEmptyDB, actualEmptyDB);
     }
 }
