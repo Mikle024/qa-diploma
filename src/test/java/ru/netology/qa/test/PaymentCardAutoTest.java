@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static com.codeborne.selenide.Selenide.open;
 import static ru.netology.qa.data.SQLHelper.clearDB;
 
-public class AutoTest {
+public class PaymentCardAutoTest {
     static {
         Configuration.headless = true;
     }
