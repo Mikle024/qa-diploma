@@ -75,6 +75,7 @@ public class AutoTest {
         PaymentCardPage.clickContinue();
 
         PaymentCardPage.checkRedNotificationRequiredField();
+        PaymentCardPage.checkRedNotificationWrongFormat();
 
         var expectedEmptyDB = true;
         var actualEmptyDB = SQLHelper.checkEmptyDB();
@@ -90,7 +91,7 @@ public class AutoTest {
         var cvc = DataHelper.generateValidCvc();
         PaymentCardPage.fillInTheForm(card, date, name, cvc);
         PaymentCardPage.clickContinue();
-        PaymentCardPage.checkRedNotificationRequiredField();
+        PaymentCardPage.checkRedNotificationWrongFormat();
 
         var expectedEmptyDB = true;
         var actualEmptyDB = SQLHelper.checkEmptyDB();
@@ -130,8 +131,8 @@ public class AutoTest {
     }
 
     @Test
-    @DisplayName("Попытка ввода букв в поле Номер карты")
-    void attemptingToEnterLettersInTheCardNumberField() {
+    @DisplayName("Негативный сценарий покупки, невалидный номер карты, состоящий из букв")
+    void negativePurchaseScenarioInvalidCardNumberConsistingOfLetters() {
         var card = DataHelper.generateAlphabeticalCardNumber();
         var date = DataHelper.generateValidDate();
         var name = DataHelper.generateValidName();
@@ -146,7 +147,7 @@ public class AutoTest {
     }
 
     @Test
-    @DisplayName("Негативный сценарий покупки, невалидный номер карты, состоящий из символов")
+    @DisplayName("Негативный сценарий покупки, невалидный номер карты, состоящий из спец. символов")
     void negativePurchaseScenarioInvalidCardNumberConsistingOfSpecialSymbols() {
         var card = DataHelper.generateCardNumberWithSpecialCharacters();
         var date = DataHelper.generateValidDate();
@@ -218,7 +219,7 @@ public class AutoTest {
         var cvc = DataHelper.generateValidCvc();
         PaymentCardPage.fillInTheForm(card, date, name, cvc);
         PaymentCardPage.clickContinue();
-        PaymentCardPage.checkRedNotificationRequiredField();
+        PaymentCardPage.checkRedNotificationWrongFormat();
 
         var expectedEmptyDB = true;
         var actualEmptyDB = SQLHelper.checkEmptyDB();
@@ -226,8 +227,8 @@ public class AutoTest {
     }
 
     @Test
-    @DisplayName("Попытка ввода букв в поле Месяц")
-    void attemptingToEnterLettersInTheMonthField() {
+    @DisplayName("Негативный сценарий покупки, невалидный месяц, состоящий из букв")
+    void negativePurchaseScenarioInvalidMonthConsistingOfLetters() {
         var card = DataHelper.generateValidCardNumberApproved();
         var date = DataHelper.generateInvalidDateMonthOfAlphabetical();
         var name = DataHelper.generateValidName();
@@ -298,7 +299,7 @@ public class AutoTest {
         var cvc = DataHelper.generateValidCvc();
         PaymentCardPage.fillInTheForm(card, date, name, cvc);
         PaymentCardPage.clickContinue();
-        PaymentCardPage.checkRedNotificationRequiredField();
+        PaymentCardPage.checkRedNotificationWrongFormat();
 
         var expectedEmptyDB = true;
         var actualEmptyDB = SQLHelper.checkEmptyDB();
@@ -436,7 +437,7 @@ public class AutoTest {
     @DisplayName("Негативный сценарий покупки, невалидное имя владельца, состоящее из спец. символов")
     void negativePurchaseScenarioInvalidOwnerNameConsistingOfSpecialSymbols() {
         var card = DataHelper.generateValidCardNumberApproved();
-        var date = DataHelper.generateInvalidDateYearOfSpace();
+        var date = DataHelper.generateValidDate();
         var name = DataHelper.generateRandomSpecialChar();
         var cvc = DataHelper.generateValidCvc();
         PaymentCardPage.fillInTheForm(card, date, name, cvc);
@@ -452,11 +453,11 @@ public class AutoTest {
     @DisplayName("Негативный сценарий покупки, пустое поле CVC/CVV")
     void negativePurchaseScenarioEmptyCvcField() {
         var card = DataHelper.generateValidCardNumberApproved();
-        var date = DataHelper.generateInvalidDateYearOfSpace();
-        var name = DataHelper.generateRandomNumber();
+        var date = DataHelper.generateValidDate();
+        var name = DataHelper.generateValidName();
         PaymentCardPage.fillInTheForm(card, date, name, "");
         PaymentCardPage.clickContinue();
-        PaymentCardPage.checkRedNotificationRequiredField();
+        PaymentCardPage.checkRedNotificationWrongFormat();
 
         var expectedEmptyDB = true;
         var actualEmptyDB = SQLHelper.checkEmptyDB();
@@ -467,9 +468,9 @@ public class AutoTest {
     @DisplayName("Негативный сценарий покупки, невалидный CVC/CVV, состоящий из одной цифры")
     void negativePurchaseScenarioInvalidCvcConsistingOfOneDigit() {
         var card = DataHelper.generateValidCardNumberApproved();
-        var date = DataHelper.generateInvalidDateYearOfSpace();
-        var name = DataHelper.generateRandomNumber();
-        var cvc = DataHelper.generateValidCvc();
+        var date = DataHelper.generateValidDate();
+        var name = DataHelper.generateValidName();
+        var cvc = DataHelper.generateRandomNumber();
         PaymentCardPage.fillInTheForm(card, date, name, cvc);
         PaymentCardPage.clickContinue();
         PaymentCardPage.checkRedNotificationWrongFormat();
@@ -483,8 +484,8 @@ public class AutoTest {
     @DisplayName("Негативный сценарий покупки, невалидный CVC/CVV, состоящий из букв")
     void negativePurchaseScenarioEnterLettersInCvcField() {
         var card = DataHelper.generateValidCardNumberApproved();
-        var date = DataHelper.generateInvalidDateYearOfSpace();
-        var name = DataHelper.generateRandomNumber();
+        var date = DataHelper.generateValidDate();
+        var name = DataHelper.generateValidName();
         var cvc = DataHelper.generateRandomWord();
         PaymentCardPage.fillInTheForm(card, date, name, cvc);
         PaymentCardPage.clickContinue();
@@ -496,11 +497,11 @@ public class AutoTest {
     }
 
     @Test
-    @DisplayName("Негативный сценарий покупки, невалидный CVC/CVV, состоящий из пробела")
+    @DisplayName("Негативный сценарий покупки, невалидный CVC/CVV, состоящий из спец. символов")
     void negativePurchaseScenarioInvalidCvcConsistingOfSpecialSymbols() {
         var card = DataHelper.generateValidCardNumberApproved();
-        var date = DataHelper.generateInvalidDateYearOfSpace();
-        var name = DataHelper.generateRandomNumber();
+        var date = DataHelper.generateValidDate();
+        var name = DataHelper.generateValidName();
         var cvc = DataHelper.generateRandomSpecialChar();
         PaymentCardPage.fillInTheForm(card, date, name, cvc);
         PaymentCardPage.clickContinue();
@@ -512,11 +513,11 @@ public class AutoTest {
     }
 
     @Test
-    @DisplayName("Негативный сценарий покупки, невалидный CVC/CVV, состоящий из спец. символов")
+    @DisplayName("Негативный сценарий покупки, невалидный CVC/CVV, состоящий из пробела")
     void negativePurchaseScenarioInvalidCvcSpaceEntry() {
         var card = DataHelper.generateValidCardNumberApproved();
-        var date = DataHelper.generateInvalidDateYearOfSpace();
-        var name = DataHelper.generateRandomNumber();
+        var date = DataHelper.generateValidDate();
+        var name = DataHelper.generateValidName();
         PaymentCardPage.fillInTheForm(card, date, name, " ");
         PaymentCardPage.clickContinue();
         PaymentCardPage.checkRedNotificationWrongFormat();
