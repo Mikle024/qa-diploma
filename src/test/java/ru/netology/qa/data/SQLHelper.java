@@ -16,7 +16,7 @@ public class SQLHelper {
 
     @SneakyThrows
     private static Connection getConn() {
-        return DriverManager.getConnection("jdbc:mysql://localhost:3306/app", "app", "pass");
+        return DriverManager.getConnection(System.getProperty("db.url"), System.getProperty("db.user"), System.getProperty("db.password"));
     }
 
     @SneakyThrows
