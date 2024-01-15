@@ -75,7 +75,6 @@ public class PaymentCardAutoTest {
         PaymentCardPage.clickContinue();
 
         PaymentCardPage.checkRedNotificationRequiredField();
-        PaymentCardPage.checkRedNotificationWrongFormat();
 
         var expectedEmptyDB = true;
         var actualEmptyDB = SQLHelper.checkEmptyDB();
@@ -91,7 +90,7 @@ public class PaymentCardAutoTest {
         var cvc = DataHelper.generateValidCvc();
         PaymentCardPage.fillInTheForm(card, date, name, cvc);
         PaymentCardPage.clickContinue();
-        PaymentCardPage.checkRedNotificationWrongFormat();
+        PaymentCardPage.checkRedNotificationRequiredField();
 
         var expectedEmptyDB = true;
         var actualEmptyDB = SQLHelper.checkEmptyDB();
@@ -139,7 +138,7 @@ public class PaymentCardAutoTest {
         var cvc = DataHelper.generateValidCvc();
         PaymentCardPage.fillInTheForm(card, date, name, cvc);
         PaymentCardPage.clickContinue();
-        PaymentCardPage.checkRedNotificationWrongFormat();
+        PaymentCardPage.checkRedNotificationRequiredField();
 
         var expectedEmptyDB = true;
         var actualEmptyDB = SQLHelper.checkEmptyDB();
@@ -155,7 +154,7 @@ public class PaymentCardAutoTest {
         var cvc = DataHelper.generateValidCvc();
         PaymentCardPage.fillInTheForm(card, date, name, cvc);
         PaymentCardPage.clickContinue();
-        PaymentCardPage.checkRedNotificationWrongFormat();
+        PaymentCardPage.checkRedNotificationRequiredField();
 
         var expectedEmptyDB = true;
         var actualEmptyDB = SQLHelper.checkEmptyDB();
@@ -171,7 +170,7 @@ public class PaymentCardAutoTest {
         var cvc = DataHelper.generateValidCvc();
         PaymentCardPage.fillInTheForm(card, date, name, cvc);
         PaymentCardPage.clickContinue();
-        PaymentCardPage.checkRedNotificationWrongFormat();
+        PaymentCardPage.checkRedNotificationRequiredField();
 
         var expectedEmptyDB = true;
         var actualEmptyDB = SQLHelper.checkEmptyDB();
@@ -219,7 +218,7 @@ public class PaymentCardAutoTest {
         var cvc = DataHelper.generateValidCvc();
         PaymentCardPage.fillInTheForm(card, date, name, cvc);
         PaymentCardPage.clickContinue();
-        PaymentCardPage.checkRedNotificationWrongFormat();
+        PaymentCardPage.checkRedNotificationRequiredField();
 
         var expectedEmptyDB = true;
         var actualEmptyDB = SQLHelper.checkEmptyDB();
@@ -235,7 +234,7 @@ public class PaymentCardAutoTest {
         var cvc = DataHelper.generateValidCvc();
         PaymentCardPage.fillInTheForm(card, date, name, cvc);
         PaymentCardPage.clickContinue();
-        PaymentCardPage.checkRedNotificationWrongFormat();
+        PaymentCardPage.checkRedNotificationRequiredField();
 
         var expectedEmptyDB = true;
         var actualEmptyDB = SQLHelper.checkEmptyDB();
@@ -251,7 +250,7 @@ public class PaymentCardAutoTest {
         var cvc = DataHelper.generateValidCvc();
         PaymentCardPage.fillInTheForm(card, date, name, cvc);
         PaymentCardPage.clickContinue();
-        PaymentCardPage.checkRedNotificationWrongFormat();
+        PaymentCardPage.checkRedNotificationRequiredField();
 
         var expectedEmptyDB = true;
         var actualEmptyDB = SQLHelper.checkEmptyDB();
@@ -267,7 +266,7 @@ public class PaymentCardAutoTest {
         var cvc = DataHelper.generateValidCvc();
         PaymentCardPage.fillInTheForm(card, date, name, cvc);
         PaymentCardPage.clickContinue();
-        PaymentCardPage.checkRedNotificationWrongFormat();
+        PaymentCardPage.checkRedNotificationRequiredField();
 
         var expectedEmptyDB = true;
         var actualEmptyDB = SQLHelper.checkEmptyDB();
@@ -299,7 +298,7 @@ public class PaymentCardAutoTest {
         var cvc = DataHelper.generateValidCvc();
         PaymentCardPage.fillInTheForm(card, date, name, cvc);
         PaymentCardPage.clickContinue();
-        PaymentCardPage.checkRedNotificationWrongFormat();
+        PaymentCardPage.checkRedNotificationRequiredField();
 
         var expectedEmptyDB = true;
         var actualEmptyDB = SQLHelper.checkEmptyDB();
@@ -347,7 +346,7 @@ public class PaymentCardAutoTest {
         var cvc = DataHelper.generateValidCvc();
         PaymentCardPage.fillInTheForm(card, date, name, cvc);
         PaymentCardPage.clickContinue();
-        PaymentCardPage.checkRedNotificationWrongFormat();
+        PaymentCardPage.checkRedNotificationRequiredField();
 
         var expectedEmptyDB = true;
         var actualEmptyDB = SQLHelper.checkEmptyDB();
@@ -363,7 +362,7 @@ public class PaymentCardAutoTest {
         var cvc = DataHelper.generateValidCvc();
         PaymentCardPage.fillInTheForm(card, date, name, cvc);
         PaymentCardPage.clickContinue();
-        PaymentCardPage.checkRedNotificationWrongFormat();
+        PaymentCardPage.checkRedNotificationRequiredField();
 
         var expectedEmptyDB = true;
         var actualEmptyDB = SQLHelper.checkEmptyDB();
@@ -379,7 +378,7 @@ public class PaymentCardAutoTest {
         var cvc = DataHelper.generateValidCvc();
         PaymentCardPage.fillInTheForm(card, date, name, cvc);
         PaymentCardPage.clickContinue();
-        PaymentCardPage.checkRedNotificationWrongFormat();
+        PaymentCardPage.checkRedNotificationRequiredField();
 
         var expectedEmptyDB = true;
         var actualEmptyDB = SQLHelper.checkEmptyDB();
@@ -457,7 +456,7 @@ public class PaymentCardAutoTest {
         var name = DataHelper.generateValidName();
         PaymentCardPage.fillInTheForm(card, date, name, "");
         PaymentCardPage.clickContinue();
-        PaymentCardPage.checkRedNotificationWrongFormat();
+        PaymentCardPage.checkRedNotificationRequiredField();
 
         var expectedEmptyDB = true;
         var actualEmptyDB = SQLHelper.checkEmptyDB();
@@ -489,7 +488,7 @@ public class PaymentCardAutoTest {
         var cvc = DataHelper.generateRandomWord();
         PaymentCardPage.fillInTheForm(card, date, name, cvc);
         PaymentCardPage.clickContinue();
-        PaymentCardPage.checkRedNotificationWrongFormat();
+        PaymentCardPage.checkRedNotificationRequiredField();
 
         var expectedEmptyDB = true;
         var actualEmptyDB = SQLHelper.checkEmptyDB();
@@ -505,7 +504,7 @@ public class PaymentCardAutoTest {
         var cvc = DataHelper.generateRandomSpecialChar();
         PaymentCardPage.fillInTheForm(card, date, name, cvc);
         PaymentCardPage.clickContinue();
-        PaymentCardPage.checkRedNotificationWrongFormat();
+        PaymentCardPage.checkRedNotificationRequiredField();
 
         var expectedEmptyDB = true;
         var actualEmptyDB = SQLHelper.checkEmptyDB();
@@ -520,7 +519,7 @@ public class PaymentCardAutoTest {
         var name = DataHelper.generateValidName();
         PaymentCardPage.fillInTheForm(card, date, name, " ");
         PaymentCardPage.clickContinue();
-        PaymentCardPage.checkRedNotificationWrongFormat();
+        PaymentCardPage.checkRedNotificationRequiredField();
 
         var expectedEmptyDB = true;
         var actualEmptyDB = SQLHelper.checkEmptyDB();
