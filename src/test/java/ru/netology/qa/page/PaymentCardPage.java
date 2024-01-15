@@ -29,7 +29,6 @@ public class PaymentCardPage {
     private static SelenideElement redNotificationWrongCardExpiration = $(byText("Истёк срок действия карты"));
     private static SelenideElement redNotificationWrongCardBeyondTheExpirationDate = $(byText("Неверно указан срок действия карты"));
 
-
     private static ElementsCollection notificationContent = $$(".notification__content");
     private static SelenideElement notificationSuccessfullyContent = notificationContent.get(0);
     private static SelenideElement notificationRejectionContent = notificationContent.get(1);
