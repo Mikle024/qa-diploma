@@ -226,6 +226,22 @@ public class PaymentCardAutoTest {
     }
 
     @Test
+    @DisplayName("Негативный сценарий покупки с оплатой по карте, невалидный месяц, состоящий из нулей")
+    void negativePurchaseScenarioInvalidMonthConsistingOfZeros() {
+        var card = DataHelper.generateValidCardNumberApproved();
+        var date = DataHelper.generateInvalidDateMonthConsistingOfZeros();
+        var name = DataHelper.generateValidName();
+        var cvc = DataHelper.generateValidCvc();
+        PaymentCardPage.fillInTheForm(card, date, name, cvc);
+        PaymentCardPage.clickContinue();
+        PaymentCardPage.checkRedNotificationWrongFormat();
+
+        var expectedEmptyDB = true;
+        var actualEmptyDB = SQLHelper.checkEmptyDB();
+        assertEquals(expectedEmptyDB, actualEmptyDB);
+    }
+
+    @Test
     @DisplayName("Негативный сценарий покупки с оплатой по карте, невалидный месяц, состоящий из букв")
     void negativePurchaseScenarioInvalidMonthConsistingOfLetters() {
         var card = DataHelper.generateValidCardNumberApproved();
@@ -347,6 +363,22 @@ public class PaymentCardAutoTest {
         PaymentCardPage.fillInTheForm(card, date, name, cvc);
         PaymentCardPage.clickContinue();
         PaymentCardPage.checkRedNotificationRequiredField();
+
+        var expectedEmptyDB = true;
+        var actualEmptyDB = SQLHelper.checkEmptyDB();
+        assertEquals(expectedEmptyDB, actualEmptyDB);
+    }
+
+    @Test
+    @DisplayName("Негативный сценарий покупки с оплатой по карте, невалидный год, состоящий из нулей")
+    void negativePurchaseScenarioInvalidYearConsistingOfZeros() {
+        var card = DataHelper.generateValidCardNumberApproved();
+        var date = DataHelper.generateInvalidDateYearConsistingOfZeros();
+        var name = DataHelper.generateValidName();
+        var cvc = DataHelper.generateValidCvc();
+        PaymentCardPage.fillInTheForm(card, date, name, cvc);
+        PaymentCardPage.clickContinue();
+        PaymentCardPage.checkRedNotificationWrongFormat();
 
         var expectedEmptyDB = true;
         var actualEmptyDB = SQLHelper.checkEmptyDB();

@@ -82,6 +82,15 @@ public class DataHelper {
         return new Date(" ", String.format("%02d", randomYear % 100));
     }
 
+    public static Date generateInvalidDateMonthConsistingOfZeros() {
+        int randomYear = LocalDate.now().getYear() + new Random().nextInt(6);
+        return new Date("00", String.format("%02d", randomYear % 100));
+    }
+
+    public static Date generateInvalidDateYearConsistingOfZeros() {
+        return new Date(String.format("%02d", new Random().nextInt(12) + 1), "00");
+    }
+
     public static Date generateInvalidDateEmptyYear() {
         return new Date(String.format("%02d", new Random().nextInt(12) + 1), "");
     }
