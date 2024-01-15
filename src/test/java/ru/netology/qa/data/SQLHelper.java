@@ -35,8 +35,15 @@ public class SQLHelper {
     }
 
     @SneakyThrows
+    public static String getCreditPaymentStatus() {
+        var requestSQL = "SELECT status FROM credit_request_entity ORDER BY created DESC LIMIT 1";
+        var conn = getConn();
+        return runner.query(conn, requestSQL, new ScalarHandler<String>());
+    }
+
+    @SneakyThrows
     public static boolean checkEmptyDB() {
-        var requestSQL = "SELECT * FROM payment_entity";
+        var requestSQL = "SELECT * FROM order_entity";
         var conn = getConn();
         ResultSetHandler<Boolean> resultSetHandler = rs -> !rs.next();
 
