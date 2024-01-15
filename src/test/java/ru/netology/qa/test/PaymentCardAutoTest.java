@@ -70,7 +70,7 @@ public class PaymentCardAutoTest {
     }
 
     @Test
-    @DisplayName("Негативный сценарий покупки, с незаполненными полями")
+    @DisplayName("Негативный сценарий покупки с оплатой по карте, с незаполненными полями")
     void negativePurchaseScenarioWithBlankFields() {
         PaymentCardPage.clickContinue();
 
@@ -82,7 +82,7 @@ public class PaymentCardAutoTest {
     }
 
     @Test
-    @DisplayName("Негативный сценарий покупки, пустое поле Номер карты")
+    @DisplayName("Негативный сценарий покупки с оплатой по карте, пустое поле Номер карты")
     void negativePurchaseScenarioBlankCardNumberField() {
         var card = DataHelper.generateEmptyCardNumber();
         var date = DataHelper.generateValidDate();
@@ -98,7 +98,7 @@ public class PaymentCardAutoTest {
     }
 
     @Test
-    @DisplayName("Негативный сценарий покупки, невалидный номер карты, менее 16 цифр")
+    @DisplayName("Негативный сценарий покупки с оплатой по карте, невалидный номер карты, менее 16 цифр")
     void negativePurchaseScenarioInvalidCardNumberLessThan16Digits() {
         var card = DataHelper.generateShortCardNumber();
         var date = DataHelper.generateValidDate();
@@ -114,7 +114,7 @@ public class PaymentCardAutoTest {
     }
 
     @Test
-    @DisplayName("Негативный сценарий покупки, невалидный номер карты, состоящий из нулей")
+    @DisplayName("Негативный сценарий покупки с оплатой по карте, невалидный номер карты, состоящий из нулей")
     void negativePurchaseScenarioInvalidCardNumberConsistingOfZeros() {
         var card = DataHelper.generateCardNumberOfZeros();
         var date = DataHelper.generateValidDate();
@@ -130,7 +130,7 @@ public class PaymentCardAutoTest {
     }
 
     @Test
-    @DisplayName("Негативный сценарий покупки, невалидный номер карты, состоящий из букв")
+    @DisplayName("Негативный сценарий покупки с оплатой по карте, невалидный номер карты, состоящий из букв")
     void negativePurchaseScenarioInvalidCardNumberConsistingOfLetters() {
         var card = DataHelper.generateAlphabeticalCardNumber();
         var date = DataHelper.generateValidDate();
@@ -146,7 +146,7 @@ public class PaymentCardAutoTest {
     }
 
     @Test
-    @DisplayName("Негативный сценарий покупки, невалидный номер карты, состоящий из спец. символов")
+    @DisplayName("Негативный сценарий покупки с оплатой по карте, невалидный номер карты, состоящий из спец. символов")
     void negativePurchaseScenarioInvalidCardNumberConsistingOfSpecialSymbols() {
         var card = DataHelper.generateCardNumberWithSpecialCharacters();
         var date = DataHelper.generateValidDate();
@@ -162,7 +162,7 @@ public class PaymentCardAutoTest {
     }
 
     @Test
-    @DisplayName("Негативный сценарий покупки, невалидный номер карты, ввод пробела")
+    @DisplayName("Негативный сценарий покупки с оплатой по карте, невалидный номер карты, ввод пробела")
     void negativePurchaseScenarioInvalidCardNumberSpaceEntry() {
         var card = DataHelper.generateCardNumberWithSpace();
         var date = DataHelper.generateValidDate();
@@ -178,7 +178,7 @@ public class PaymentCardAutoTest {
     }
 
     @Test
-    @DisplayName("Негативный сценарий покупки, невалидный месяц, менее 2 цифр")
+    @DisplayName("Негативный сценарий покупки с оплатой по карте, невалидный месяц, менее 2 цифр")
     void negativePurchaseScenarioInvalidMonthLessThan2Digits() {
         var card = DataHelper.generateValidCardNumberApproved();
         var date = DataHelper.generateInvalidDateOneCharacterMonth();
@@ -194,7 +194,7 @@ public class PaymentCardAutoTest {
     }
 
     @Test
-    @DisplayName("Негативный сценарий покупки, невалидный месяц, больше 12")
+    @DisplayName("Негативный сценарий покупки c оплатой по карте, невалидный месяц, больше 12")
     void negativePurchaseScenarioInvalidMonthGreaterThanTwelfth() {
         var card = DataHelper.generateValidCardNumberApproved();
         var date = DataHelper.generateInvalidDateMonthGreaterThanTwelfth();
@@ -210,7 +210,7 @@ public class PaymentCardAutoTest {
     }
 
     @Test
-    @DisplayName("Негативный сценарий покупки, пустое поле Месяц")
+    @DisplayName("Негативный сценарий покупки с оплатой по карте, пустое поле Месяц")
     void negativePurchaseScenarioBlankMonthField() {
         var card = DataHelper.generateValidCardNumberApproved();
         var date = DataHelper.generateInvalidDateEmptyMonth();
@@ -226,7 +226,7 @@ public class PaymentCardAutoTest {
     }
 
     @Test
-    @DisplayName("Негативный сценарий покупки, невалидный месяц, состоящий из букв")
+    @DisplayName("Негативный сценарий покупки с оплатой по карте, невалидный месяц, состоящий из букв")
     void negativePurchaseScenarioInvalidMonthConsistingOfLetters() {
         var card = DataHelper.generateValidCardNumberApproved();
         var date = DataHelper.generateInvalidDateMonthOfAlphabetical();
@@ -242,7 +242,7 @@ public class PaymentCardAutoTest {
     }
 
     @Test
-    @DisplayName("Негативный сценарий покупки, невалидный месяц, состоящий из спец. символов")
+    @DisplayName("Негативный сценарий покупки с оплатой по карте, невалидный месяц, состоящий из спец. символов")
     void negativePurchaseScenarioInvalidMonthConsistingOfSpecialSymbols() {
         var card = DataHelper.generateValidCardNumberApproved();
         var date = DataHelper.generateInvalidDateMonthOfSpecialCharacter();
@@ -258,7 +258,7 @@ public class PaymentCardAutoTest {
     }
 
     @Test
-    @DisplayName("Негативный сценарий покупки, невалидный месяц, ввод пробела")
+    @DisplayName("Негативный сценарий покупки с оплатой по карте, невалидный месяц, ввод пробела")
     void negativePurchaseScenarioInvalidMonthSpaceEntry() {
         var card = DataHelper.generateValidCardNumberApproved();
         var date = DataHelper.generateInvalidDateMonthOfSpace();
@@ -274,7 +274,7 @@ public class PaymentCardAutoTest {
     }
 
     @Test
-    @DisplayName("Негативный сценарий покупки, невалидный год, истекший срок")
+    @DisplayName("Негативный сценарий покупки с оплатой по карте, невалидный год, истекший срок")
     void negativePurchaseScenarioInvalidYearExpiredTerm() {
         var card = DataHelper.generateValidCardNumberApproved();
         var date = DataHelper.generateInvalidFutureDate();
@@ -290,7 +290,7 @@ public class PaymentCardAutoTest {
     }
 
     @Test
-    @DisplayName("Негативный сценарий покупки, пустое поле Год")
+    @DisplayName("Негативный сценарий покупки с оплатой по карте, пустое поле Год")
     void negativePurchaseScenarioEmptyFieldYear() {
         var card = DataHelper.generateValidCardNumberApproved();
         var date = DataHelper.generateInvalidDateEmptyYear();
@@ -306,7 +306,7 @@ public class PaymentCardAutoTest {
     }
 
     @Test
-    @DisplayName("Негативный сценарий покупки, невалидный год, менее 2 цифр")
+    @DisplayName("Негативный сценарий покупки с оплатой по карте, невалидный год, менее 2 цифр")
     void negativePurchaseScenarioInvalidYearLessThan2Digits() {
         var card = DataHelper.generateValidCardNumberApproved();
         var date = DataHelper.generateInvalidDateOneCharacterYear();
@@ -322,7 +322,7 @@ public class PaymentCardAutoTest {
     }
 
     @Test
-    @DisplayName("Негативный сценарий покупки, прошедшая дата")
+    @DisplayName("Негативный сценарий покупки с оплатой по карте, прошедшая дата")
     void negativePurchaseScenarioPastDate() {
         var card = DataHelper.generateValidCardNumberApproved();
         var date = DataHelper.generateInvalidPastDate();
@@ -338,7 +338,7 @@ public class PaymentCardAutoTest {
     }
 
     @Test
-    @DisplayName("Негативный сценарий покупки, невалидный год, состоящий из букв")
+    @DisplayName("Негативный сценарий покупки с оплатой по карте, невалидный год, состоящий из букв")
     void negativePurchaseScenarioEnterLettersInTheYearField() {
         var card = DataHelper.generateValidCardNumberApproved();
         var date = DataHelper.generateInvalidDateYearOfAlphabetical();
@@ -354,7 +354,7 @@ public class PaymentCardAutoTest {
     }
 
     @Test
-    @DisplayName("Негативный сценарий покупки, невалидный год, состоящий из спец. символов")
+    @DisplayName("Негативный сценарий покупки с оплатой по карте, невалидный год, состоящий из спец. символов")
     void negativePurchaseScenarioInvalidYearConsistingOfSpecialSymbols() {
         var card = DataHelper.generateValidCardNumberApproved();
         var date = DataHelper.generateInvalidDateYearOfSpecialCharacter();
@@ -370,7 +370,7 @@ public class PaymentCardAutoTest {
     }
 
     @Test
-    @DisplayName("Негативный сценарий покупки, невалидный год, ввод пробела")
+    @DisplayName("Негативный сценарий покупки с оплатой по карте, невалидный год, ввод пробела")
     void negativePurchaseScenarioInvalidYearSpaceEntry() {
         var card = DataHelper.generateValidCardNumberApproved();
         var date = DataHelper.generateInvalidDateYearOfSpace();
@@ -386,7 +386,7 @@ public class PaymentCardAutoTest {
     }
 
     @Test
-    @DisplayName("Позитивный сценарий покупки, использование дефиса в имени")
+    @DisplayName("Позитивный сценарий покупки c оплатой по карте, использование дефиса в имени")
     void positivePurchaseScenarioOfHyphenInAName() {
         var card = DataHelper.generateValidCardNumberApproved();
         var date = DataHelper.generateValidDate();
@@ -402,7 +402,7 @@ public class PaymentCardAutoTest {
     }
 
     @Test
-    @DisplayName("Негативный сценарий покупки, пустое поле Владелец")
+    @DisplayName("Негативный сценарий покупки с оплатой по карте, пустое поле Владелец")
     void negativePurchaseScenarioBlankOwnerField() {
         var card = DataHelper.generateValidCardNumberApproved();
         var date = DataHelper.generateValidDate();
@@ -417,7 +417,7 @@ public class PaymentCardAutoTest {
     }
 
     @Test
-    @DisplayName("Негативный сценарий покупки, невалидное имя владельца, состоящее из цифр")
+    @DisplayName("Негативный сценарий покупки с оплатой по карте, невалидное имя владельца, состоящее из цифр")
     void negativePurchaseScenarioInvalidOwnerNameConsistingOfDigits() {
         var card = DataHelper.generateValidCardNumberApproved();
         var date = DataHelper.generateValidDate();
@@ -433,7 +433,7 @@ public class PaymentCardAutoTest {
     }
 
     @Test
-    @DisplayName("Негативный сценарий покупки, невалидное имя владельца, состоящее из спец. символов")
+    @DisplayName("Негативный сценарий покупки с оплатой по карте, невалидное имя владельца, состоящее из спец. символов")
     void negativePurchaseScenarioInvalidOwnerNameConsistingOfSpecialSymbols() {
         var card = DataHelper.generateValidCardNumberApproved();
         var date = DataHelper.generateValidDate();
@@ -449,7 +449,7 @@ public class PaymentCardAutoTest {
     }
 
     @Test
-    @DisplayName("Негативный сценарий покупки, пустое поле CVC/CVV")
+    @DisplayName("Негативный сценарий покупки с оплатой по карте, пустое поле CVC/CVV")
     void negativePurchaseScenarioEmptyCvcField() {
         var card = DataHelper.generateValidCardNumberApproved();
         var date = DataHelper.generateValidDate();
@@ -464,7 +464,7 @@ public class PaymentCardAutoTest {
     }
 
     @Test
-    @DisplayName("Негативный сценарий покупки, невалидный CVC/CVV, состоящий из одной цифры")
+    @DisplayName("Негативный сценарий покупки с оплатой по карте, невалидный CVC/CVV, состоящий из одной цифры")
     void negativePurchaseScenarioInvalidCvcConsistingOfOneDigit() {
         var card = DataHelper.generateValidCardNumberApproved();
         var date = DataHelper.generateValidDate();
@@ -480,7 +480,7 @@ public class PaymentCardAutoTest {
     }
 
     @Test
-    @DisplayName("Негативный сценарий покупки, невалидный CVC/CVV, состоящий из букв")
+    @DisplayName("Негативный сценарий покупки с оплатой по карте, невалидный CVC/CVV, состоящий из букв")
     void negativePurchaseScenarioEnterLettersInCvcField() {
         var card = DataHelper.generateValidCardNumberApproved();
         var date = DataHelper.generateValidDate();
@@ -496,7 +496,7 @@ public class PaymentCardAutoTest {
     }
 
     @Test
-    @DisplayName("Негативный сценарий покупки, невалидный CVC/CVV, состоящий из спец. символов")
+    @DisplayName("Негативный сценарий покупки с оплатой по карте, невалидный CVC/CVV, состоящий из спец. символов")
     void negativePurchaseScenarioInvalidCvcConsistingOfSpecialSymbols() {
         var card = DataHelper.generateValidCardNumberApproved();
         var date = DataHelper.generateValidDate();
@@ -512,7 +512,7 @@ public class PaymentCardAutoTest {
     }
 
     @Test
-    @DisplayName("Негативный сценарий покупки, невалидный CVC/CVV, состоящий из пробела")
+    @DisplayName("Негативный сценарий покупки с оплатой по карте, невалидный CVC/CVV, состоящий из пробела")
     void negativePurchaseScenarioInvalidCvcSpaceEntry() {
         var card = DataHelper.generateValidCardNumberApproved();
         var date = DataHelper.generateValidDate();
