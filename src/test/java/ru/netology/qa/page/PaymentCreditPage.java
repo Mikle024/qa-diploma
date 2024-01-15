@@ -43,7 +43,7 @@ public class PaymentCreditPage {
                                      String setCVC) {
         inputCardNumber.setValue(card.getCardNumber());
         inputMonth.setValue(date.getMonth());
-        inputYear.setValue(date.getYear()):
+        inputYear.setValue(date.getYear());
         inputName.setValue(setName);
         inputCVC.setValue(setCVC);
     }
