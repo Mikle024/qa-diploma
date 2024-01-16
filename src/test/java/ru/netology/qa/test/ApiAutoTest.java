@@ -33,10 +33,9 @@ public class ApiAutoTest {
     @DisplayName("API, Позитивный сценарий покупки с оплатой по карте, статус карты APPROVED")
     void shouldReturn200CodeAndAnApprovedCardStatusDebit() {
         var card = ApiHelper.generateApiCardInfoApproved();
-        ApiHelper.returnResponse(card, pathForDebit, successfulCode);
 
         var expectedStatusCard = card.getStatus();
-        var actualStatusCard = SQLHelper.getCardPaymentStatus();
+        var actualStatusCard = ApiHelper.returnResponse(card, pathForDebit, successfulCode);
         assertEquals(expectedStatusCard, actualStatusCard);
     }
 
@@ -44,10 +43,9 @@ public class ApiAutoTest {
     @DisplayName("API, Негативный сценарий покупки с оплатой по карте, статус карты DECLINED")
     void shouldReturn200CodeAndAnDeclinedCardStatusDebit() {
         var card = ApiHelper.generateApiCardInfoDeclined();
-        ApiHelper.returnResponse(card, pathForDebit, successfulCode);
 
         var expectedStatusCard = card.getStatus();
-        var actualStatusCard = SQLHelper.getCardPaymentStatus();
+        var actualStatusCard = ApiHelper.returnResponse(card, pathForDebit, successfulCode);
         assertEquals(expectedStatusCard, actualStatusCard);
     }
 
@@ -55,10 +53,9 @@ public class ApiAutoTest {
     @DisplayName("API, Позитивный сценарий покупки с оплатой в кредит, статус карты APPROVED")
     void shouldReturn200CodeAndAnApprovedCardStatusCredit() {
         var card = ApiHelper.generateApiCardInfoApproved();
-        ApiHelper.returnResponse(card, pathForCredit, successfulCode);
 
         var expectedStatusCard = card.getStatus();
-        var actualStatusCard = SQLHelper.getCreditPaymentStatus();
+        var actualStatusCard = ApiHelper.returnResponse(card, pathForCredit, successfulCode);
         assertEquals(expectedStatusCard, actualStatusCard);
     }
 
@@ -66,10 +63,9 @@ public class ApiAutoTest {
     @DisplayName("API, Негативный сценарий покупки с оплатой в кредит, статус карты DECLINED")
     void shouldReturn200CodeAndAnDeclinedCardStatusCredit() {
         var card = ApiHelper.generateApiCardInfoDeclined();
-        ApiHelper.returnResponse(card, pathForCredit, successfulCode);
 
         var expectedStatusCard = card.getStatus();
-        var actualStatusCard = SQLHelper.getCreditPaymentStatus();
+        var actualStatusCard = ApiHelper.returnResponse(card, pathForCredit, successfulCode);
         assertEquals(expectedStatusCard, actualStatusCard);
     }
 }
