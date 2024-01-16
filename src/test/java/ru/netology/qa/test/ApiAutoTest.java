@@ -58,7 +58,7 @@ public class ApiAutoTest {
         ApiHelper.returnResponse(card, pathForCredit, successfulCode);
 
         var expectedStatusCard = card.getStatus();
-        var actualStatusCard = SQLHelper.getCardPaymentStatus();
+        var actualStatusCard = SQLHelper.getCreditPaymentStatus();
         assertEquals(expectedStatusCard, actualStatusCard);
     }
 
@@ -69,7 +69,7 @@ public class ApiAutoTest {
         ApiHelper.returnResponse(card, pathForCredit, successfulCode);
 
         var expectedStatusCard = card.getStatus();
-        var actualStatusCard = SQLHelper.getCardPaymentStatus();
+        var actualStatusCard = SQLHelper.getCreditPaymentStatus();
         assertEquals(expectedStatusCard, actualStatusCard);
     }
 }
