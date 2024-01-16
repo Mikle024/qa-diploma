@@ -28,7 +28,7 @@ public class ApiHelper {
                 .then()
                 .statusCode(apiStatus)
                 .extract().response();
-        return response.path("message");
+        return response.jsonPath().getString("status");
     }
 
     public static APICardInfo generateApiCardInfoApproved() {
