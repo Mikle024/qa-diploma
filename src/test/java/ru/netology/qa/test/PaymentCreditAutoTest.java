@@ -557,6 +557,4 @@ public class PaymentCreditAutoTest {
         var actualEmptyDB = SQLHelper.checkEmptyDB();
         assertEquals(expectedEmptyDB, actualEmptyDB);
     }
-
-
 }
