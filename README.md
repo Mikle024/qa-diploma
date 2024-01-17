@@ -9,12 +9,17 @@
 возможность приобретения тура в кредит с использованием банковской карты.
 
 _**Данный проект полностью настроен для работы с СУБД MySQL.**_
+<details><summary>_**Для работы с PostgreSQL**_</summary>
+
+1. Во время запуска jar-файла используйте флаг --spring.config.name=application-postgresql
+
+</details>
 
 Необходимое установленное ПО для запуска данного проекта на вашем ПК:
 
-- GIT - система контроля версий
-- IDEA - среда разработки
-- Desktop version Docker - система для развертки контейнеров
+- [GIT](https://git-scm.com/) - система контроля версий
+- [IDEA](https://www.jetbrains.com/ru-ru/idea/) - среда разработки
+- [Docker Desktop](https://www.docker.com/products/docker-desktop/) - система для развертки контейнеров
 
 ## **Процедура запуска автотестов**
 
@@ -36,12 +41,17 @@ _**Данный проект полностью настроен для рабо
  - **3.2** Команда для запуска SUT файла:
 
 `java -jar artifacts/aqa-shop.jar`
+<details><summary>Команда для запука с PostgreSQL</summary>
 
- - **3.3** Команда для сборки проекта и прогона тестов:
+1. `java -jar artifacts/aqa-shop.jar --spring.config.name=application-postgresql`
+
+</details>
+
+- **3.3** Команда для сборки проекта и прогона тестов:
 
 `./gradlew clean test`
 
- - **3.4** Команда для формирования отчетов и их открытия в браузере:
+- **3.4** Команда для формирования отчетов и их открытия в браузере:
 
 `./gradlew allureServe `
 
