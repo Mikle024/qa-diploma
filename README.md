@@ -9,8 +9,11 @@
 возможность приобретения тура в кредит с использованием банковской карты.
 
 **Документация**:
+
 [План автоматизации тестирования веб-сервиса покупки тура.](https://github.com/Mikle024/qa-diploma/blob/main/documentation/Plan.md)
+
 [Отчет по результатам тестирования](https://github.com/Mikle024/qa-diploma/blob/main/documentation/Report.md)
+
 [Отчёт по итогам автоматизации](https://github.com/Mikle024/qa-diploma/blob/main/documentation/Summary.md)
 
 
@@ -74,7 +77,8 @@ _**Данный проект полностью настроен для рабо
 
 (Если браузер автоматически не открыл, то можно пройти по адресу, который будет указан в выводе консоли после выполнения
 команды)
-![Снимок экрана 2024-01-15 154805](https://github.com/Mikle024/qa-diploma/assets/142490585/147b32ca-375a-4ed2-8f63-8dc48121e6a4)
+![Снимок экрана 2024-01-17 234342](https://github.com/Mikle024/qa-diploma/assets/142490585/7a1c0df9-fd25-46fd-a7fb-bdd64cb7ed83)
+
 
 
 ## 4. Завершение работы:
