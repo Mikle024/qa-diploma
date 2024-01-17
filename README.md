@@ -9,7 +9,7 @@
 возможность приобретения тура в кредит с использованием банковской карты.
 
 _**Данный проект полностью настроен для работы с СУБД MySQL.**_
-<details><summary>_**Для работы с PostgreSQL**_</summary>
+<details><summary></i></b>Для работы с PostgreSQL</i></b></summary>
 
 1. Во время запуска jar-файла используйте флаг --spring.config.name=application-postgresql
 
@@ -38,18 +38,21 @@ _**Данный проект полностью настроен для рабо
 
 `docker compose up --build`
 
+
  - **3.2** Команда для запуска SUT файла:
 
 `java -jar artifacts/aqa-shop.jar`
-<details><summary>Команда для запука с PostgreSQL</summary>
+ <details><summary>Команда для запука SUT с PostgreSQL</summary>
 
 1. `java -jar artifacts/aqa-shop.jar --spring.config.name=application-postgresql`
 
 </details>
 
+
 - **3.3** Команда для сборки проекта и прогона тестов:
 
 `./gradlew clean test`
+
 
 - **3.4** Команда для формирования отчетов и их открытия в браузере:
 
