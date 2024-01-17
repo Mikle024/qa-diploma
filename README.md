@@ -9,9 +9,10 @@
 возможность приобретения тура в кредит с использованием банковской карты.
 
 _**Данный проект полностью настроен для работы с СУБД MySQL.**_
-<details><summary></i></b>Для работы с PostgreSQL</i></b></summary>
+<details><summary>Для работы с PostgreSQL</summary>
 
-1. Во время запуска jar-файла используйте флаг --spring.config.name=application-postgresql
+
+ -> Во время запуска jar-файла используйте флаг --spring.config.name=application-postgresql
 
 </details>
 
@@ -44,7 +45,7 @@ _**Данный проект полностью настроен для рабо
 `java -jar artifacts/aqa-shop.jar`
  <details><summary>Команда для запука SUT с PostgreSQL</summary>
 
-1. `java -jar artifacts/aqa-shop.jar --spring.config.name=application-postgresql`
+  `java -jar artifacts/aqa-shop.jar --spring.config.name=application-postgresql`
 
 </details>
 
