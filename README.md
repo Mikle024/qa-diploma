@@ -12,7 +12,8 @@ _**Данный проект полностью настроен для рабо
 <details><summary>Для работы с PostgreSQL</summary>
 
 
- -> Во время запуска jar-файла используйте флаг --spring.config.name=application-postgresql
+    Во время запуска jar-файла и прогона тестов используйте флаг с указанием к базе данных:
+    "-Dspring.datasource.url=jdbc:postgresql://localhost:5432/app"
 
 </details>
 
@@ -45,7 +46,7 @@ _**Данный проект полностью настроен для рабо
 `java -jar artifacts/aqa-shop.jar`
  <details><summary>Команда для запука SUT с PostgreSQL</summary>
 
-  `java -jar artifacts/aqa-shop.jar --spring.config.name=application-postgresql`
+  `java "-Dspring.datasource.url=jdbc:postgresql://localhost:5432/app" -jar artifacts/aqa-shop.jar`
 
 </details>
 
@@ -53,6 +54,12 @@ _**Данный проект полностью настроен для рабо
 - **3.3** Команда для сборки проекта и прогона тестов:
 
 `./gradlew clean test`
+
+ <details><summary>Команда для сборки с PostgreSQL</summary>
+
+  `./gradlew clean test "-Ddb.url=jdbc:postgresql://localhost:5432/app"`
+
+</details>
 
 
 - **3.4** Команда для формирования отчетов и их открытия в браузере:

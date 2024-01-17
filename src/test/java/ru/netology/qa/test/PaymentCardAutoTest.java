@@ -378,7 +378,7 @@ public class PaymentCardAutoTest {
         var cvc = DataHelper.generateValidCvc();
         PaymentCardPage.fillInTheForm(card, date, name, cvc);
         PaymentCardPage.clickContinue();
-        PaymentCardPage.checkRedNotificationWrongFormat();
+        PaymentCardPage.checkRedNotificationWrongCardExpiration();
 
         var expectedEmptyDB = true;
         var actualEmptyDB = SQLHelper.checkEmptyDB();
@@ -481,6 +481,54 @@ public class PaymentCardAutoTest {
     }
 
     @Test
+    @DisplayName("Негативный сценарий покупки с оплатой по карте, невалидное имя владельца, состоящее из кириллицы")
+    void negativePurchaseScenarioInvalidOwnerNameConsistingOfCyrillicCharacters() {
+        var card = DataHelper.generateValidCardNumberApproved();
+        var date = DataHelper.generateValidDate();
+        var name = DataHelper.generateInvalidNameConsistingOfCyrillicCharacters();
+        var cvc = DataHelper.generateValidCvc();
+        PaymentCardPage.fillInTheForm(card, date, name, cvc);
+        PaymentCardPage.clickContinue();
+        PaymentCardPage.checkRedNotificationWrongFormat();
+
+        var expectedEmptyDB = true;
+        var actualEmptyDB = SQLHelper.checkEmptyDB();
+        assertEquals(expectedEmptyDB, actualEmptyDB);
+    }
+
+    @Test
+    @DisplayName("Негативный сценарий покупки с оплатой по карте, невалидное имя владельца, состоящее из более 50 символов")
+    void negativePurchaseScenarioInvalidOwnerNameWithMoreThan50Characters() {
+        var card = DataHelper.generateValidCardNumberApproved();
+        var date = DataHelper.generateValidDate();
+        var name = DataHelper.generateInvalidNameWithMoreThan50Characters();
+        var cvc = DataHelper.generateValidCvc();
+        PaymentCardPage.fillInTheForm(card, date, name, cvc);
+        PaymentCardPage.clickContinue();
+        PaymentCardPage.checkRedNotificationWrongFormat();
+
+        var expectedEmptyDB = true;
+        var actualEmptyDB = SQLHelper.checkEmptyDB();
+        assertEquals(expectedEmptyDB, actualEmptyDB);
+    }
+
+    @Test
+    @DisplayName("Негативный сценарий покупки с оплатой по карте, невалидное имя владельца, состоящее из менее 2 символов")
+    void negativePurchaseScenarioInvalidOwnerNameWithLessThan2Characters() {
+        var card = DataHelper.generateValidCardNumberApproved();
+        var date = DataHelper.generateValidDate();
+        var name = DataHelper.generateInvalidNameWithLessThan2Characters();
+        var cvc = DataHelper.generateValidCvc();
+        PaymentCardPage.fillInTheForm(card, date, name, cvc);
+        PaymentCardPage.clickContinue();
+        PaymentCardPage.checkRedNotificationWrongFormat();
+
+        var expectedEmptyDB = true;
+        var actualEmptyDB = SQLHelper.checkEmptyDB();
+        assertEquals(expectedEmptyDB, actualEmptyDB);
+    }
+
+    @Test
     @DisplayName("Негативный сценарий покупки с оплатой по карте, пустое поле CVC/CVV")
     void negativePurchaseScenarioEmptyCvcField() {
         var card = DataHelper.generateValidCardNumberApproved();
@@ -552,6 +600,22 @@ public class PaymentCardAutoTest {
         PaymentCardPage.fillInTheForm(card, date, name, " ");
         PaymentCardPage.clickContinue();
         PaymentCardPage.checkRedNotificationRequiredField();
+
+        var expectedEmptyDB = true;
+        var actualEmptyDB = SQLHelper.checkEmptyDB();
+        assertEquals(expectedEmptyDB, actualEmptyDB);
+    }
+
+    @Test
+    @DisplayName("Негативный сценарий покупки с оплатой по карте, невалидный CVC/CVV, состоящий из нулей")
+    void negativePurchaseScenarioInvalidCvcOfZeros() {
+        var card = DataHelper.generateValidCardNumberApproved();
+        var date = DataHelper.generateValidDate();
+        var name = DataHelper.generateValidName();
+        var cvc = DataHelper.generateInvalidCvcOfZeros();
+        PaymentCardPage.fillInTheForm(card, date, name, cvc);
+        PaymentCardPage.clickContinue();
+        PaymentCardPage.checkRedNotificationWrongFormat();
 
         var expectedEmptyDB = true;
         var actualEmptyDB = SQLHelper.checkEmptyDB();

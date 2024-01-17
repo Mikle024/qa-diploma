@@ -135,6 +135,20 @@ public class DataHelper {
         return firstName + " " + lastName;
     }
 
+    public static String generateInvalidNameConsistingOfCyrillicCharacters() {
+        String firstName = new Faker(new Locale("ru")).name().firstName();
+        String lastName = new Faker(new Locale("ru")).name().lastName();
+        return firstName + " " + lastName;
+    }
+
+    public static String generateInvalidNameWithMoreThan50Characters() {
+        return new Faker(new Locale("en")).regexify("[A-Z]{51}");
+    }
+
+    public static String generateInvalidNameWithLessThan2Characters() {
+        return new Faker(new Locale("en")).regexify("[A-Z]{1}");
+    }
+
     public static String generateValidHyphenInAName() {
         String firstName = new Faker(new Locale("en")).name().firstName();
         String lastName = new Faker(new Locale("en")).name().lastName();
@@ -153,6 +167,10 @@ public class DataHelper {
 
     public static String generateValidCvc() {
         return new Faker().regexify("[0-9]{3}");
+    }
+
+    public static String generateInvalidCvcOfZeros() {
+        return "000";
     }
 
     public static String generateRandomWord() {

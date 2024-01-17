@@ -362,7 +362,7 @@ public class PaymentCreditAutoTest {
         var cvc = DataHelper.generateValidCvc();
         PaymentCreditPage.fillInTheForm(card, date, name, cvc);
         PaymentCreditPage.clickContinue();
-        PaymentCreditPage.checkRedNotificationWrongFormat();
+        PaymentCreditPage.checkRedNotificationWrongCardExpiration();
 
         var expectedEmptyDB = true;
         var actualEmptyDB = SQLHelper.checkEmptyDB();
@@ -481,6 +481,54 @@ public class PaymentCreditAutoTest {
     }
 
     @Test
+    @DisplayName("Негативный сценарий покупки с оплатой в кредит, невалидное имя владельца, состоящее из кириллицы")
+    void negativePurchaseScenarioInvalidOwnerNameConsistingOfCyrillicCharacters() {
+        var card = DataHelper.generateValidCardNumberApproved();
+        var date = DataHelper.generateValidDate();
+        var name = DataHelper.generateInvalidNameConsistingOfCyrillicCharacters();
+        var cvc = DataHelper.generateValidCvc();
+        PaymentCreditPage.fillInTheForm(card, date, name, cvc);
+        PaymentCreditPage.clickContinue();
+        PaymentCreditPage.checkRedNotificationWrongFormat();
+
+        var expectedEmptyDB = true;
+        var actualEmptyDB = SQLHelper.checkEmptyDB();
+        assertEquals(expectedEmptyDB, actualEmptyDB);
+    }
+
+    @Test
+    @DisplayName("Негативный сценарий покупки с оплатой в кредит, невалидное имя владельца, состоящее из более 50 символов")
+    void negativePurchaseScenarioInvalidOwnerNameWithMoreThan50Characters() {
+        var card = DataHelper.generateValidCardNumberApproved();
+        var date = DataHelper.generateValidDate();
+        var name = DataHelper.generateInvalidNameWithMoreThan50Characters();
+        var cvc = DataHelper.generateValidCvc();
+        PaymentCreditPage.fillInTheForm(card, date, name, cvc);
+        PaymentCreditPage.clickContinue();
+        PaymentCreditPage.checkRedNotificationWrongFormat();
+
+        var expectedEmptyDB = true;
+        var actualEmptyDB = SQLHelper.checkEmptyDB();
+        assertEquals(expectedEmptyDB, actualEmptyDB);
+    }
+
+    @Test
+    @DisplayName("Негативный сценарий покупки с оплатой в кредит, невалидное имя владельца, состоящее из менее 2 символов")
+    void negativePurchaseScenarioInvalidOwnerNameWithLessThan2Characters() {
+        var card = DataHelper.generateValidCardNumberApproved();
+        var date = DataHelper.generateValidDate();
+        var name = DataHelper.generateInvalidNameWithLessThan2Characters();
+        var cvc = DataHelper.generateValidCvc();
+        PaymentCreditPage.fillInTheForm(card, date, name, cvc);
+        PaymentCreditPage.clickContinue();
+        PaymentCreditPage.checkRedNotificationWrongFormat();
+
+        var expectedEmptyDB = true;
+        var actualEmptyDB = SQLHelper.checkEmptyDB();
+        assertEquals(expectedEmptyDB, actualEmptyDB);
+    }
+
+    @Test
     @DisplayName("Негативный сценарий покупки с оплатой в кредит, пустое поле CVC/CVV")
     void negativePurchaseScenarioEmptyCvcField() {
         var card = DataHelper.generateValidCardNumberApproved();
@@ -550,6 +598,22 @@ public class PaymentCreditAutoTest {
         var date = DataHelper.generateValidDate();
         var name = DataHelper.generateValidName();
         PaymentCreditPage.fillInTheForm(card, date, name, " ");
+        PaymentCreditPage.clickContinue();
+        PaymentCreditPage.checkNotificationRejectionContent();
+
+        var expectedEmptyDB = true;
+        var actualEmptyDB = SQLHelper.checkEmptyDB();
+        assertEquals(expectedEmptyDB, actualEmptyDB);
+    }
+
+    @Test
+    @DisplayName("Негативный сценарий покупки с оплатой в кредит, невалидный CVC/CVV, состоящий из нулей")
+    void negativePurchaseScenarioInvalidCvcOfZeros() {
+        var card = DataHelper.generateValidCardNumberApproved();
+        var date = DataHelper.generateValidDate();
+        var name = DataHelper.generateValidName();
+        var cvc = DataHelper.generateInvalidCvcOfZeros();
+        PaymentCreditPage.fillInTheForm(card, date, name, cvc);
         PaymentCreditPage.clickContinue();
         PaymentCreditPage.checkNotificationRejectionContent();
 
