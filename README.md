@@ -8,6 +8,12 @@
 пользователям два варианта оплаты: стандартную оплату с использованием дебетовой карты и
 возможность приобретения тура в кредит с использованием банковской карты.
 
+**Документация**:
+[План автоматизации тестирования веб-сервиса покупки тура.](https://github.com/Mikle024/qa-diploma/blob/main/documentation/Plan.md)
+[Отчет по результатам тестирования](https://github.com/Mikle024/qa-diploma/blob/main/documentation/Report.md)
+[Отчёт по итогам автоматизации](https://github.com/Mikle024/qa-diploma/blob/main/documentation/Summary.md)
+
+
 _**Данный проект полностью настроен для работы с СУБД MySQL.**_
 <details><summary>Для работы с PostgreSQL</summary>
 
